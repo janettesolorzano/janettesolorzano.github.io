@@ -1,0 +1,131 @@
+var img;
+//var img2;
+//var img3;
+var initials ='js'; // your initials
+var choice = '1'; // starting choice, so it is not empty
+var screenbg = 250; // off white background
+var lastscreenshot=61; // last screenshot never taken
+
+function preload() {
+// preload() runs once, it may make you wait
+//  img = loadImage('cat.png');  // cat.jpg needs to be next to this .js file
+// you can link to an image on your github account
+  img = loadImage('https://veryprofessional3d.github.io/images/cat3.jpg');
+//  img2 = loadImage('https://veryprofessional3d.github.io/images/cat2.jpg');
+//  img3 = loadImage('https://veryprofessional3d.github.io/images/rainbow.gif');
+}
+
+function setup() {
+createCanvas(600, 600);  // canvas size
+background(screenbg);   // use our background screen color
+
+}
+
+function draw() {
+  if (keyIsPressed) {
+    choice = key; // set choice to the key that was pressed
+    clear_print(); // check to see if it is clear screen or save image
+  }
+  if (mouseIsPressed){
+    newkeyChoice(choice);  // if the mouse is pressed call newkeyChoice
+  }
+}
+
+function newkeyChoice(toolChoice) { //toolchoice is the key that was pressed
+  // the key mapping if statements that you can change to do anything you want.
+  // just make sure each key option has the a stroke or fill and then what type of 
+  // graphic function
+
+
+  if (toolChoice == '1' ) {  // first tool BLUE
+   stroke(19,2,3)
+    strokeWeight(08);
+    line(mouseX, mouseY, pmouseX, pmouseY);
+   
+    strokeWeight(02);
+    line(mouseX, mouseY, pmouseX, pmouseY);
+    
+  } else if (toolChoice == '2') { // second tool
+
+    strokeWeight(24);
+    rect(mouseX, mouseY, pmouseX, pmouseY);
+  } else if (toolChoice == '0') { // third tool
+ 
+    fill(43,261,289);
+    circle(mouseX, mouseY, 350, 70);
+  } else if (toolChoice == '3') {
+
+ 
+
+    stroke(500, 285, 524, 82);
+  rect(mouseX, mouseY, pmouseX, pmouseY);
+  } else if (toolChoice == '7') {
+
+  fill(43,241,249);
+    rect(mouseX, mouseY, 10,10);
+  } else if (toolChoice == '9') {
+
+ 
+    
+    stroke(3, 0, 255);3
+  line(mouseX, mouseY, pmouseX, pmouseY);
+  } else if (key == '6') { // this tool calls a function
+    stroke(670, 5, 260);
+    testbox(10, 3520, 2700);
+    testbox(290, 260, 220);
+    
+  } else if (toolChoice == '8') { // sixth tool - colored triangle
+    push();
+    const h = (frameCount * 6) % 380;
+    noFill();
+    stroke(h, 540, 1420,500);
+    strokeWeight(3);
+    const r = 20;
+    triangle(
+      mouseX, mouseY - r,
+      mouseX - r * 0.856, mouseY + r / 8,
+      mouseX + r * 0.836, mouseY + r / 2
+    );
+    pop();
+
+    stroke(250);
+    line(mouseX, mouseY, pmouseX, pmouseY);
+  } else if (toolChoice == '5') {
+
+
+  
+
+    fill(370, 140, 400, 80);
+    rect(mouseX, mouseY, 40, 40);
+  } else if (toolChoice == '4') {
+    stroke(550, 089);
+    fill(random(255), random(253), random(225), random(260));
+    rect(mouseX, mouseY, 240, 160);
+  } else if (toolChoice == 'g' || toolChoice == 'J') { // g places the image we pre-loaded
+    image(img, mouseX, mouseY, 50, 50);
+//  } else if (toolChoice == 'h' || toolChoice == 'H') { // g places the image we pre-loaded
+//    image(img2, mouseX-45, mouseY-25, 580, 540,22);
+//  } else if (toolChoice == 'A' || toolChoice == 'I') { // g places the image we pre-loaded
+//    image(img3, mouseX-25, mouseY-25, 57, 580,220);
+
+  }
+ }
+ 
+function testbox(r, g, b) {
+// this is a test function that will show you how you can put your own functions into the sketch
+  x = mouseX;
+  y = mouseY;
+  fill(r, g, b);
+  rect(x-50, y-50, 100, 100);
+
+}
+
+function clear_print() {
+// this will do one of two things, x clears the screen by resetting the background
+// p calls the routine saveme, which saves a copy of the screen
+  if (key == 'x' || key == 'X') {
+    background(screenbg); // set the screen back to the background color
+  } else if (key == 'p' || key == 'P') {
+     saveme();  // call saveme which saves an image of the screen
+  }
+}
