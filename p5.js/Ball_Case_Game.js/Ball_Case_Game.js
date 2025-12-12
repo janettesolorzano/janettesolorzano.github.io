@@ -4,8 +4,8 @@ var ballSize = 80;
 var score =0;
 var gameState= "L1";
 
-function preload(){
-spaceCow=loadImage('https://janettesolorzano.github.io/p5.js/Ball_Case_Game.js/space cow.png'); 
+function preload (){
+spaceCow=loadImage('https://janettesolorzano.github.io/p5.js/Ball_Case_Game.js/spaceCow.png'); 
 }
  
 function setup() {
@@ -47,7 +47,7 @@ function levelOne(){
  gameState= "L2";
   }
   
-image (spaceCow,ballx, bally, ballSize, ballSize);
+ image (spaceCow,ballx-40, bally-40, ballSize, ballSize);
  line(ballx, bally, mouseX, mouseY);
   
 } // end level one
@@ -70,7 +70,7 @@ function levelTwo(){
  
     
 //  line(ballx, bally, mouseX, mouseY);
-  ellipse(ballx, bally, ballSize, ballSize);
+image (spaceCow,ballx-40, bally-40, ballSize, ballSize);
 } // end level two
 
 function levelThree(){
@@ -97,7 +97,7 @@ text("press screen to start a new game!", width/2, height
 
   }
   //  line(ballx, bally, mouseX, mouseY);
-  ellipse(ballx, bally, ballSize, ballSize);
+image (spaceCow,ballx-40, bally-40, ballSize, ballSize);
 } // end level thre
    text("game over!", width/10, height/10);
 text("try again!", width/10, height/10);
